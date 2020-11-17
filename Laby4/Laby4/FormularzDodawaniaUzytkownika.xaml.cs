@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
+using Microsoft.Win32;
 
 namespace Laby4
 {
@@ -45,12 +46,22 @@ namespace Laby4
 
             try
             {
-                MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField });
+                MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField, Pesel=peselField, Phone=phoneField, Adress=adressField});
             }
             catch (Exception blad)
             {
                 MessageBox.Show(blad.Message);
             }
+        }
+        private void ImageLoad(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri fileUri = new Uri(openFileDialog.FileName);
+                imgDynamic.Source = new BitmapImage(fileUri);
+            }
+
         }
     }
 

@@ -47,7 +47,7 @@ namespace Laby4
 
         try
         {
-                var mySerializer = new XmlSerializer(typeof(List<Person>));
+            var mySerializer = new XmlSerializer(typeof(List<Person>));
             var myFileStream = new FileStream("People.xml", FileMode.Open);
 
             PersonList = (List<Person>)mySerializer.Deserialize(myFileStream);
