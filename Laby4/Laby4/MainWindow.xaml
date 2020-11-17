@@ -11,25 +11,28 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" /> <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
-            x:Name="DataGrid1"  Margin="5"
-             IsEnabled="True" ItemsSource="{Binding People.xml}" AutoGenerateColumns="False">
+        <ListView Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Name="ListViewXAML" Margin="10" BorderBrush="Black"  PreviewMouseLeftButtonUp="listView_Click">
+            <ListView.View>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Imię" Binding="{Binding firstname}" Width="*"/>
-                <DataGridTextColumn Header="Nazwisko" Binding="{Binding lastname}" Width="*"/>
-                <DataGridTextColumn Header="Miasto" Binding="{Binding city}" Width="*"/>
-            </DataGrid.Columns>
+                <GridView>
+                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding firstname}" Width="200"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding lastname}" Width="200" />
+                    <GridViewColumn Header="Miasto" DisplayMemberBinding="{Binding city}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
-        </DataGrid>
+        <Button Content="LOAD" Grid.Row="3" Grid.Column="0" Margin="50"  Click="LoadXML"/>
+        <Button Content="SAVE" Grid.Row="3" Grid.Column="1" Margin="50"  Click="SaveXML"/>
+        <Button Content="REFRESH" Grid.Row="3" Grid.Column="2" Margin="50"  Click="RefreshWindow"/>
 
-        <Button Content="Dodawanie nowych użytkowników" Grid.Row="2" Grid.Column="0" Margin="50" Grid.ColumnSpan="3" Click="Button_Click"/>
-        
     </Grid>
 </Window>
