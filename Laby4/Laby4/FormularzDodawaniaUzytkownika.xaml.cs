@@ -22,58 +22,37 @@ namespace Laby4
     /// </summary>
     public partial class FormularzDodawaniaUzytkownika : Window
     {
+        private string nameField;
+        private string surnameField;
+        private string peselField;
+        private string phoneField;
+        private string adressField;
+        private string cityField;
+
         public FormularzDodawaniaUzytkownika()
         {
             InitializeComponent();
         }
-        public static void SerializePerson(Person per)
+
+        private void Button_Dodaj(object sender, RoutedEventArgs e)
         {
-            string filename = "Person.xml";
+            nameField = textBoxImie.Text;
+            surnameField = textBoxNazwisko.Text;
+            peselField = textBoxPesel.Text;
+            phoneField = textBoxNumer.Text;
+            adressField = textBoxAdress.Text;
+            cityField = textBoxMiasto.Text;
 
-            var serializer = new XmlSerializer(typeof(Person));
-
-            using (var stream = File.Open(filename, FileMode.Create))
+            try
             {
-                serializer.Serialize(stream, per);
+                MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField });
+            }
+            catch (Exception blad)
+            {
+                MessageBox.Show(blad.Message);
             }
         }
-
-        public void ButtonSave_Click(object sender, EventArgs e)
-        {
-            //using (StreamWriter ksiazka += new StreamWriter("D:\\Archiwa\\"+textBoxAutor.Text+".txt"))
-            //   {
-            //       ksiazka.WriteLine("Data Archiwizacji");
-            //       ksiazka.WriteLine(DateTime.Now.ToString());
-            //       ksiazka.WriteLine("");
-            //       ksiazka.WriteLine("Autor:"+textBoxAutor.Text);
-
-
-
-            //   }
-            Person osoba1 = (new Person("Monika", "Malec", "1952-04-02"));
-
-            SerializePerson(osoba1);
-        }
     }
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName{ get; set; }
-        public string Pesel { get; set; }
 
-
-        public Person()
-        {
-
-        }
-
-        public Person(string firstname, string lastname, string pesel)
-        {
-            this.FirstName = firstname;
-            this.LastName = lastname;
-            this.Pesel = pesel;
-        }
-        
-    }
 
 }

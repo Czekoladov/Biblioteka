@@ -8,9 +8,7 @@
         Title="MainWindow" Height="450" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,13 +17,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Name="ListViewXAML" Margin="10" BorderBrush="Black"  PreviewMouseLeftButtonUp="listView_Click">
+        <ListView Grid.Row="0" Grid.ColumnSpan="3" Name="ListViewXAML" Margin="10" BorderBrush="Black">
             <ListView.View>
 
                 <GridView>
-                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding firstname}" Width="200"/>
-                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding lastname}" Width="200" />
-                    <GridViewColumn Header="Miasto" DisplayMemberBinding="{Binding city}" Width="200"/>
+                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Firstname}" Width="200"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Lastname}" Width="200" />
+                    <GridViewColumn Header="Miasto" DisplayMemberBinding="{Binding City}" Width="200"/>
                 </GridView>
             </ListView.View>
         </ListView>

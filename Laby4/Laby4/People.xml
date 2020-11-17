@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Person>
+    <pesel>66042643739</pesel>
+    <lastname>Kent</lastname>
+    <firstname>Clark</firstname>
+    <phone>408 496-7223</phone>
+    <address>10932 Royal Street</address>
+    <city>Central City</city>
+  </Person>
+  <Person>
+    <pesel>52053033522</pesel>
+    <lastname>Banner</lastname>
+    <firstname>Bruce</firstname>
+    <phone>415 986-7020</phone>
+    <address>309 63rd St.</address>
+    <city>Planet Hulk</city>
+  </Person>
+  <Person>
+    <pesel>62011378367</pesel>
+    <lastname>Prince</lastname>
+    <firstname>Diana</firstname>
+    <phone>415 548-7723</phone>
+    <address>589 3 Maja</address>
+    <city>Temiskira</city>
+  </Person>
+</ArrayOfPerson>

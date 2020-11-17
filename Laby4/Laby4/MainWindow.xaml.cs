@@ -14,48 +14,66 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Laby4
 {
 
     public partial class MainWindow : Window
     {
+        [XmlArray("DataGridXAML"), XmlArrayItem(typeof(List<Person>), ElementName = "Person")]
+        public static List<Person> PersonList = new List<Person>();
+        FormularzDodawaniaUzytkownika formularz = new FormularzDodawaniaUzytkownika();
         public MainWindow()
         {
             InitializeComponent();
-            //XmlTextReader xmlReader = new XmlTextReader("People.xml");
-            //while (xmlReader.Read())
-            //{
-            //    if ((xmlReader.NodeType == XmlNodeType.Element) && (xmlReader.Name == "Cube"))
-            //    {
-            //        if (xmlReader.HasAttributes)
-            //            Console.WriteLine(xmlReader.GetAttribute("currency") + ": " + xmlReader.GetAttribute("rate"));
-            //    }
-            //}
-            //Console.ReadKey();
-
-            string sampleXmlFile = "People.xml";
-            DataSet dataSet = new DataSet();
-            dataSet.ReadXml(sampleXmlFile);
-            DataView dataView = new DataView(dataSet.Tables[0]);
-            DataGrid1.ItemsSource = dataView;
+            formularz.Show();
         }
-        private void Button_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+
+        
+        private void SaveXML(object oSender, RoutedEventArgs eRoutedEventArgs)
+        { 
+            XmlSerializer ser = new XmlSerializer(typeof(List<Person>));
+
+            using (FileStream fs = new FileStream ("People.xml", FileMode.Create))
+            {
+                ser.Serialize(fs, PersonList);
+            }
+        }
+
+    private void LoadXML(object osender, RoutedEventArgs eRoutedEventArgs)
+    {
+
+        try
         {
-            FormularzDodawaniaUzytkownika win2 = new FormularzDodawaniaUzytkownika();
-            win2.ShowDialog();
-            //this.Close();
+                var mySerializer = new XmlSerializer(typeof(List<Person>));
+            var myFileStream = new FileStream("People.xml", FileMode.Open);
+
+            PersonList = (List<Person>)mySerializer.Deserialize(myFileStream);
+            ListViewXAML.ItemsSource = PersonList;
+        }
+        catch
+        {
+            MessageBox.Show("Nie odnaleziono pliku");
         }
 
-        //private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    using (DataSet data = new DataSet()) 
-        //    {
-        //        data.ReadXml(Server.MapPath("`/Laby4/People.xml"));
-        //        DataGrid1.DataSource
-            
-            
-        //    }
-        //}
+
+}
+    private void RefreshWindow(object sender, RoutedEventArgs e)
+    {
+        ListViewXAML.ItemsSource = null;
+        ListViewXAML.ItemsSource = PersonList;
     }
+
+    public class Person
+    {
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Pesel { get; set; }
+        public string Phone { get; set; }
+        public string City { get; set; }
+        public string Adress { get; set; }
+    }
+}
 }

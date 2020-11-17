@@ -30,11 +30,11 @@
 
         <TextBox Name="textBoxPesel" Grid.Column="1" Grid.Row="0" Width="Auto" Height="Auto"/>
         <TextBox Name="textBoxNazwisko" Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxPImie" Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto"/>
+        <TextBox Name="textBoxImie" Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto"/>
         <TextBox Name="textBoxNumer" Grid.Column="1" Grid.Row="3" Width="Auto" Height="Auto"/>
         <TextBox Name="textBoxAdress" Grid.Column="1" Grid.Row="4" Width="Auto" Height="Auto"/>
         <TextBox Name="textBoxMiasto" Grid.Column="1" Grid.Row="5" Width="Auto" Height="Auto"/>
 
-        <Button Name ="ButtonSave" Content="Dodaj do pliku People.xml" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"/>
+        <Button Name ="ButtonSave" Content="DODAJ" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Click="Button_Dodaj"/>
     </Grid>
 </Window>
