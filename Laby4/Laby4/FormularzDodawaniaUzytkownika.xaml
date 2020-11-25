@@ -30,12 +30,12 @@
         <Label Name="City" Content="Miasto" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Name="Image" Content="Zdjecie" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <TextBox Name="textBoxPesel" Grid.Column="1" Grid.Row="0" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxNazwisko" Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxImie" Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxNumer" Grid.Column="1" Grid.Row="3" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxAdress" Grid.Column="1" Grid.Row="4" Width="Auto" Height="Auto"/>
-        <TextBox Name="textBoxMiasto" Grid.Column="1" Grid.Row="5" Width="Auto" Height="Auto"/>
+        <TextBox Name="textBoxPesel" Grid.Column="1" Grid.Row="0" Width="Auto" Height="Auto" TextChanged="ValiPesel"/>
+        <TextBox Name="textBoxNazwisko" Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" TextChanged="ValiNazwisko"/>
+        <TextBox Name="textBoxImie" Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" TextChanged="ValiImie"/>
+        <TextBox Name="textBoxNumer" Grid.Column="1" Grid.Row="3" Width="Auto" Height="Auto" TextChanged="ValiNumer"/>
+        <TextBox Name="textBoxAdress" Grid.Column="1" Grid.Row="4" Width="Auto" Height="Auto" TextChanged="ValiAdress"/>
+        <TextBox Name="textBoxMiasto" Grid.Column="1" Grid.Row="5" Width="Auto" Height="Auto" TextChanged="ValiMiasto"/>
 
         <Button Name ="ImageLoadFromFile" Content="ADD IMAGE" Grid.Column="0" Grid.Row="6" Margin="10" Click="ImageLoad"/>
         <Button Name ="ButtonSave" Content="DODAJ" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Click="Button_Dodaj"/>
