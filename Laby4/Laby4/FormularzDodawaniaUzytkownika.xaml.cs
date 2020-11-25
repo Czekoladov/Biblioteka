@@ -38,20 +38,27 @@ namespace Laby4
 
         private void Button_Dodaj(object sender, RoutedEventArgs e)
         {
-            nameField = textBoxImie.Text;
-            surnameField = textBoxNazwisko.Text;
-            peselField = textBoxPesel.Text;
-            phoneField = textBoxNumer.Text;
-            adressField = textBoxAdress.Text;
-            cityField = textBoxMiasto.Text;
-
-            try
+            if (textBoxPesel.Text == "" || textBoxNazwisko.Text == "" || textBoxImie.Text == "" || textBoxNumer.Text == "" || textBoxAdress.Text == "" || textBoxMiasto.Text == "" || textBoxPesel.Text.Length != 11 || textBoxNumer.Text.Length < 9)
             {
-                MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField, Pesel=peselField, Phone=phoneField, Adress=adressField});
+                MessageBox.Show("Pola nie mogą być puste!\n Pesel musi mieć dokładnie 11 cyfr! \nNumer musi mieć przynajmniej 9 cyfr!");
             }
-            catch (Exception blad)
+            else
             {
-                MessageBox.Show(blad.Message);
+                nameField = textBoxImie.Text;
+                surnameField = textBoxNazwisko.Text;
+                peselField = textBoxPesel.Text;
+                phoneField = textBoxNumer.Text;
+                adressField = textBoxAdress.Text;
+                cityField = textBoxMiasto.Text;
+
+                try
+                {
+                    MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField, Pesel = peselField, Phone = phoneField, Adress = adressField });
+                }
+                catch (Exception blad)
+                {
+                    MessageBox.Show(blad.Message);
+                }
             }
         }
         private void ImageLoad(object sender, RoutedEventArgs e)
