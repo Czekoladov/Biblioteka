@@ -30,7 +30,13 @@ namespace Laby4
         private string phoneField;
         private string adressField;
         private string cityField;
-            
+
+        string tmpPesel;
+        string tmpNazwisko;
+        string tmpImie;
+        string tmpNumer;
+        string tmpAdress;
+        string tmpMiastio;
         public FormularzDodawaniaUzytkownika()
         {
             InitializeComponent();
@@ -79,22 +85,25 @@ namespace Laby4
                 if (!Regex.IsMatch(input, @"^[0-9]{1,11}$"))
                 {
                     MessageBox.Show("Wpisany przez Ciebie Pesel musi skladac sie dokladnie z 11 cyfr");
-                    textBoxPesel.Text = "";
+                    textBoxPesel.Text = tmpPesel;
                 }
+                tmpPesel = textBoxPesel.Text;
             }
         }
 
         private void ValiNazwisko(object sender, TextChangedEventArgs e)
         {
             string input = (sender as TextBox).Text;
+            
             if (textBoxNazwisko.Text.Length > 1)
             {
                 if (!Regex.IsMatch(input, @"^[A-Z]{1}[a-z]{1,48}$"))//najdluzsze zanotowane nazwisko liczylo 48 znakow, a najkrotsze 1 
                 {
 
                     MessageBox.Show("Pole Nazwisko ma limit ustawiony na 50 znakow. \nNie moze zawierac znakow specjalnych i cyfr.\nMusi zaczynac sie z duzej litery");
-                    textBoxNazwisko.Text = "";
+                    textBoxNazwisko.Text = tmpNazwisko;
                 }
+                tmpNazwisko = textBoxNazwisko.Text;
             }
         }
         private void ValiImie(object sender, TextChangedEventArgs e)
@@ -106,8 +115,9 @@ namespace Laby4
                 {
 
                     MessageBox.Show("Pole Imie ma limit ustawiony na 50 znakow. \nNie moze zawierac znakow specjalnych i cyfr.\nMusi zaczynac sie z duzej litery");
-                    textBoxImie.Text = "";
+                    textBoxImie.Text = tmpImie;
                 }
+                tmpImie = textBoxImie.Text;
             }
         }
         private void ValiNumer(object sender, TextChangedEventArgs e)
@@ -118,8 +128,9 @@ namespace Laby4
                 if (!Regex.IsMatch(input, @"^[0-9]{9,22}$"))//najdluzszy numer ponoc moze miec 22 znaki
                 {
                     MessageBox.Show("Wpisywany przez Ciebie Numer musi skladac sie z 9-22 cyfr.\nNie dopisuj + !\nNie uzywaj spacji!");
-                    textBoxNumer.Text = "";
+                    textBoxNumer.Text = tmpNumer;
                 }
+                tmpNumer = textBoxNumer.Text;
             }
         }
         private void ValiAdress(object sender, TextChangedEventArgs e)
@@ -131,8 +142,9 @@ namespace Laby4
                 {
 
                     MessageBox.Show("Pole Adres ma limit ustawiony na 81 znakow. \nNie moze zawierac znakow specjalnych ('/').\nMusi zaczynac sie z duzej litery");
-                    textBoxAdress.Text = "";
+                    textBoxAdress.Text = tmpAdress;
                 }
+                tmpAdress = textBoxAdress.Text;
             }
         }
         private void ValiMiasto(object sender, TextChangedEventArgs e)
@@ -144,8 +156,9 @@ namespace Laby4
                 {
 
                     MessageBox.Show("Pole Miasto ma limit ustawiony na 85 znakow. \nNie moze zawierac znakow specjalnych i cyfr.\nMusi zaczynac sie z duzej litery");
-                    textBoxMiasto.Text = "";
+                    textBoxMiasto.Text = tmpMiastio;
                 }
+                tmpMiastio = textBoxMiasto.Text;
             }
         }
     }
