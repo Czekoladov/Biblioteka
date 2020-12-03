@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Row="0" Grid.ColumnSpan="3" Name="ListViewXAML" Margin="10" BorderBrush="Black">
+        <ListView Grid.Row="0" Grid.ColumnSpan="3" Name="ListViewXAML" Margin="10" BorderBrush="Black" PreviewMouseLeftButtonUp="listView_Click">
             <ListView.View>
 
                 <GridView>

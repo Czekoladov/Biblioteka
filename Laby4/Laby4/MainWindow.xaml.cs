@@ -66,7 +66,16 @@ namespace Laby4
         ListViewXAML.ItemsSource = PersonList;
     }
 
-    public class Person
+       private void listView_Click(object sender, MouseButtonEventArgs e)
+        {
+            var item = (sender as ListView).SelectedIndex;
+            if (item >= 0)
+            {
+                Modyfikacja mod = new Modyfikacja(item);
+                mod.Show();
+            }
+      }
+        public class Person
     {
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -74,6 +83,11 @@ namespace Laby4
         public string Phone { get; set; }
         public string City { get; set; }
         public string Adress { get; set; }
-    }
+            [XmlIgnore()]
+            public BitmapImage Image { get; set; }
+
+            [XmlElement("Imgxml")]
+            public string imgxml { get { return Image.UriSource.ToString(); } set { Image = new BitmapImage(new Uri(value)); } }
+        }
 }
 }

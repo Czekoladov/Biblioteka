@@ -37,6 +37,8 @@ namespace Laby4
         string tmpNumer;
         string tmpAdress;
         string tmpMiastio;
+
+        private BitmapImage imgadd;
         public FormularzDodawaniaUzytkownika()
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace Laby4
 
                 try
                 {
-                    MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField, Pesel = peselField, Phone = phoneField, Adress = adressField });
+                    MainWindow.PersonList.Add(new MainWindow.Person() { Firstname = nameField, Lastname = surnameField, City = cityField, Pesel = peselField, Phone = phoneField, Adress = adressField, Image= imgadd });
                 }
                 catch (Exception blad)
                 {
@@ -70,12 +72,21 @@ namespace Laby4
         private void ImageLoad(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
             {
-                Uri fileUri = new Uri(openFileDialog.FileName);
-                imgDynamic.Source = new BitmapImage(fileUri);
-            }
+                string filePath;
+                openFileDialog.InitialDirectory = Environment.CurrentDirectory;
+                openFileDialog.Filter = "PNG Image | *.png";
 
+
+                if (openFileDialog.ShowDialog() == true)
+                {
+
+                    filePath = openFileDialog.FileName;
+                    Uri uri = new Uri(filePath);
+                    imgDynamic.Source = new BitmapImage(uri);
+                    imgadd = new BitmapImage(uri);
+                }
+            }
         }
         private void ValiPesel(object sender, TextChangedEventArgs e)
         {
